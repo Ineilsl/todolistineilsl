@@ -17,10 +17,6 @@
     service:
       name: httpd 
       state: started
-   - name: ensure apache is running
-    service:
-      name: httpd
-      state: started
   handlers:
     - name: restart apache
       service:

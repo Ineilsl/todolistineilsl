@@ -1,14 +1,21 @@
-- hosts: apache
-  sudo: yes
+---
+- name: This sets up an httpd webserver
+  hosts: localhost
   tasks:
-    - name: install apache2
-      apt: name=apache2 update_cache=yes state=latest
-
-    - name: enabled mod_rewrite
-      apache2_module: name=rewrite state=present
-      notify:
-        - restart apache2
-
-  handlers:
-    - name: restart apache2
-      service: name=apache2 state=restarted
+  - name: Install apache packages 
+    yum:
+      name: httpd
+      state: present
+  - name: ensure httpd is running
+    service:
+      name: httpd 
+      state: started
+  - name: Open port 80 for http access
+    firewalld:
+      service: http
+      permanent: true
+      state: enabled
+  - name: Restart the firewalld service to load in the firewall changes
+    service: 
+      name: firewalld 
+      state: restarted

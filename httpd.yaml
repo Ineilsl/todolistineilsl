@@ -6,8 +6,15 @@
     yum:
       name: httpd
       state: latest
+    become: True
     notify:
     - restart apache
+  - name: Enable Apache
+    service:
+      name: httpd
+      state: started
+      enabled: True
+    become: True
   - name: ensure apache is running
     service:
       name: httpd

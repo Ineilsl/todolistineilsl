@@ -1,4 +1,3 @@
----
 - name: This sets up an httpd webserver
   hosts: 127.0.0.1
   connection: local
@@ -6,16 +5,16 @@
   - name: Install apache packages 
     yum:
       name: httpd
-      state: latest
+    state: latest
   - name: write the apache config file
     template:
       src: /srv/httpd.j2
       dest: /etc/httpd.conf
     notify:
     - restart apache
-  - name: ensure httpd is running
+  - name: ensure apache is running
     service:
-      name: httpd 
+      name: httpd
       state: started
   - name: Open port 80 for http access
     firewalld:
@@ -26,3 +25,8 @@
     service: 
       name: firewalld 
       state: restarted
+  handlers:
+    - name: restart apache
+      service:
+        name: httpd
+        state: restarted

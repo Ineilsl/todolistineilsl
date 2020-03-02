@@ -1,36 +1,16 @@
 - name: This sets up an httpd webserver
   hosts: 127.0.0.1
   connection: local
+  sudo: yes
   tasks:
-  - name: Install apache packages 
-    yum:
-      name: httpd
-      state: latest
-    become: True
-    notify:
-    - restart apache
-  - name: Enable Apache
-    service:
-      name: httpd
-      state: started
-      enabled: True
-    become: True
-  - name: ensure apache is running
-    service:
-      name: httpd
-      state: started
-    become: True
-  - name: Open port 80 for http access
-    firewalld:
-      service: http
-      permanent: true
-      state: enabled
-  - name: Restart the firewalld service to load in the firewall changes
-    service: 
-      name: firewalld 
-      state: restarted
+    - name: install apache2
+      apt: name=apache2 update_cache=yes state=latest
+
+    - name: enabled mod_rewrite
+      apache2_module: name=rewrite state=present
+      notify:
+        - restart apache2
+
   handlers:
-    - name: restart apache
-      service:
-        name: httpd
-        state: restarted
+    - name: restart apache2
+      service: name=apache2 state=restarted

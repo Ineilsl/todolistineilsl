@@ -17,11 +17,6 @@
     service:
       name: httpd 
       state: started
-  handlers:
-    - name: restart apache
-      service:
-        name: httpd
-        state: restarted
   - name: Open port 80 for http access
     firewalld:
       service: http

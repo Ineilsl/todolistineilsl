@@ -5,7 +5,9 @@
   - name: Install apache packages 
     yum:
       name: httpd
-    state: latest
+      state: latest
+    notify:
+    - restart apache
   - name: ensure apache is running
     service:
       name: httpd

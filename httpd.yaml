@@ -4,7 +4,17 @@
   become: True
   tasks:
     - name: install php packages
-      apt: name=['php5-cli', 'php5-curl', 'php5-fpm', 'php5-intl', 'php5-json', 'php5-mcrypt', 'php5-sqlite'] update_cache=yes state=latest
+      apt:
+        name:
+          - php5-cli
+          - php5-curl
+          - php5-fpm
+          - php5-intl
+          - php5-json
+          - php5-mcrypt
+          - php5-sqlite
+        state: latest
+        update_cache: yes
   
     - name: install apache2
       apt: name=apache2 update_cache=yes state=latest

@@ -19,7 +19,19 @@
       apache2_module: name=rewrite state=present
       notify:
         - restart apache2
-
+        
+    - name: install mariadb
+      yum:
+        name:
+          - mariadb-server
+        state: latest
+        
+    - name: start mariadb
+      service:
+        name: mariadb
+        enabled: true
+        state: started
+        
   handlers:
     - name: restart apache2
       service: name=apache2 state=restarted

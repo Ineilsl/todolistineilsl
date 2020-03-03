@@ -20,15 +20,15 @@
       notify:
         - restart apache2
         
-    - name: install mariadb
+    - name: install mysql
       yum:
         name:
-          - mariadb-server
+          - mysql-server
         state: latest
         
-    - name: start mariadb
+    - name: start mysql
       service:
-        name: mariadb
+        name: mysql
         enabled: true
         state: started
         

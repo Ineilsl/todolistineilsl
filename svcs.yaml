@@ -23,8 +23,12 @@
     - name: install mysql
       yum:
         name:
+          - mysql-server-core-5.5
+          - mysql-client-core-5.5
           - mysql-server
+          - mysql-client
         state: latest
+        update_cache: yes
         
     - name: start mysql
       service:

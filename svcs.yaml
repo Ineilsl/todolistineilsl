@@ -29,12 +29,14 @@
         state: latest
         update_cache: yes
         
-    - name: start mysql
+    - name: configure mysql
       service:
         name: mysql
         enabled: true
-        state: started
-        
+      notify:
+        - restart apache2
   handlers:
     - name: restart apache2
       service: name=apache2 state=restarted
+    - name: restart mysql
+      service: name=mysql state=restarted

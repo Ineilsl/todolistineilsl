@@ -26,6 +26,7 @@
            - mariadb-client
            - mariadb-server
            - python-mysqldb
+           - MySQL-python
         state: latest
         update_cache: yes
 

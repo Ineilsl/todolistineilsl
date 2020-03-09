@@ -28,10 +28,7 @@
            - python-mysqldb
         state: latest
         update_cache: yes
-        notify:
-           - restart apache2        
+        
   handlers:
     - name: restart apache2
       service: name=apache2 state=restarted
-    - name: restart mysql
-      service: name=mysqlg state=restarted

@@ -23,7 +23,9 @@
     - name: install mysql
       yum:
         name:
-          - default-mysql-server
+           - mariadb-client
+           - mariadb-server
+           - python-mysqldb
         state: latest
         update_cache: yes
         

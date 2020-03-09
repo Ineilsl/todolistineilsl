@@ -26,30 +26,11 @@
            - mariadb-client
            - mariadb-server
            - python-mysqldb
-           - MySQL-python
         state: latest
         update_cache: yes
 
     - name: start mariadb
       service: name=mysql state=started enabled=true
-        
-    - name: mysql_root_password
-      mysql_user:
-        login_user: root
-        login_password: 123456789
-        user: root
-        check_implicit_admin: true
-        password: 123456789
-        host: localhost
-        
-    - name: remove remote root
-      mysql_user:
-        check_implicit_admin: true
-        login_user: root
-        login_password: 123456789
-        user: root
-        host: localhost
-        state: absent
         
   handlers:
     - name: restart apache2

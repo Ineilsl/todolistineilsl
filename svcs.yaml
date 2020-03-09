@@ -31,10 +31,7 @@
         update_cache: yes
 
     - name: start mariadb
-      service:
-        name: mysql
-        enabled: true
-        state: started
+      service: name=mysql state=started enabled=true
         
     - name: mysql_root_password
       mysql_user:

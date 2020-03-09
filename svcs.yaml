@@ -28,10 +28,10 @@
            - python-mysqldb
         state: latest
         update_cache: yes
-        
+
     - name: start mariadb
       service:
-        name: mariadb
+        name: mariadb-server
         enabled: true
         state: started
         

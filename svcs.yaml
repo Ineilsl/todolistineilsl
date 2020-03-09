@@ -31,7 +31,7 @@
         
     - name: start mariadb
       service:
-        name: mysql
+        name: mariadb
         enabled: true
         state: started
         

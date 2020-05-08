@@ -31,6 +31,6 @@
         state: latest
         update_cache: yes
 
-handlers:
+  handlers:
     - name: restart apache2
       service: name=apache2 state=restarted

@@ -7,7 +7,8 @@ mkdir $WPDOWNLOADED
 echo "Configuring Mysql users..."
 service mysql start
 #mysql -u root -e "SET PASSWORD FOR root@localhost = PASSWORD('testing')";
-mysql -u root -p < $MYSQLDUMP/database.db
+curl -l https://raw.githubusercontent.com/Ineilsl/eflower/databases/database/all_dump.sql?token=AF4DFXH4AGHX2FQTAKAATJ26WVY3M > $MYSQLDUMP/all_dump.sql
+mysql -u root -p < $MYSQLDUMP/all_dump.sql
 echo "Mysql Root User: [OK]"
 echo "Configuring to latest Worpress site..."
 curl -l https://raw.githubusercontent.com/Ineilsl/todolistineilsl/master/wordpress/index.php > $WPDOWNLOADED/index.php

@@ -26,15 +26,16 @@
       yum:
         name:
           - python-mysqldb
-          - mysql-server
+          - mariadb-server
         state: latest
         update_cache: yes
         
     - name: start mysql
-      service:
-        name: mysql
-        enabled: true
-        state: started
+      sudo: yes
+      service: 
+          name: mysql 
+          state: started
+          enabled: true
         
   handlers:
     - name: restart apache2

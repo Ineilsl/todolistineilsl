@@ -1,3 +1,4 @@
 #!/bin/bash
 service mysql start
-echo "PACOOOO SA MATAO"
+service apache2 start
+echo "Container has been initialized!"

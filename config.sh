@@ -4,6 +4,7 @@ MYSQLDUMP=/var/tmp/database
 WPPATH=/var/www/html
 APA2PATH=/etc/apache2
 mkdir $WPDOWNLOADED
+mkdir $MYSQLDUMP
 echo "Configuring Mysql users..."
 service mysql start
 #mysql -u root -e "SET PASSWORD FOR root@localhost = PASSWORD('testing')";

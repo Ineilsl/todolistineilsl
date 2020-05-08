@@ -15,3 +15,5 @@ rm -rf $WPPATH/*
 mv $WPDOWNLOADED/index.php $WPPATH
 sed -i 's/DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm/DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm/' $APA2PATH/mods-enabled/dir.conf
 echo "Setup wordpress site [OK]"
+service apache2 start
+echo "Container has been initialized!"

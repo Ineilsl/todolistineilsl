@@ -3,7 +3,7 @@
   connection: local
   become: True
   vars_files:
-    - /var/tmp/vars/main.yml
+    - /var/tmp/main.yml
   tasks:
     - name: install php packages
       apt:

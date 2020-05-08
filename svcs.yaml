@@ -2,6 +2,8 @@
   hosts: 127.0.0.1
   connection: local
   become: True
+  vars_files:
+    - /var/tmp/vars/main.yml
   tasks:
     - name: install php packages
       apt:

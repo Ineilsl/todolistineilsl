@@ -8,7 +8,6 @@ echo "Configuring Mysql users..."
 service mysql start
 mysql -u root -e "SET PASSWORD FOR root@localhost = PASSWORD('testing')";
 echo "Mysql Root User: [OK]"
-service mysql stop
 echo "Configuring to latest Worpress site..."
 curl -l curl -l https://raw.githubusercontent.com/Ineilsl/todolistineilsl/master/wordpress/index.php > $WPDOWNLOADED/index.php
 echo "Download [OK]"

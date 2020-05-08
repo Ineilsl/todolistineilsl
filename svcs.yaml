@@ -1,28 +1,22 @@
-- name: This sets up an httpd webserver
-  hosts: 127.0.0.1
-  connection: local
-  become: True
-  tasks:
-    - name: install php packages
-      apt:
-        name:
-          - php
-          - libapache2-mod-php
-          - php-mysql
-        state: latest
-        update_cache: yes
-    - name: install apache2
-      apt: name=apache2 update_cache=yes state=latest
-    - name: enabled mod_rewrite
-      apache2_module: name=rewrite state=present
-    - name: install mysql
-      apt:
-        name:
-           - mariadb-client
-           - mariadb-server
-           - python-mysqldb
-        state: latest
-        update_cache: yes
-  handlers:
-    - name: restart apache2
-      service: name=apache2 state=restarted
+-
+    name: 'This sets up an httpd webserver'
+    hosts: 127.0.0.1
+    connection: local
+    become: true
+    tasks:
+        -
+            name: 'install php packages'
+            apt: {name: [php, libapache2-mod-php, php-mysql], state: latest, update_cache: yes}
+        -
+            name: 'install apache2'
+            apt: 'name=apache2 update_cache=yes state=latest'
+        -
+            name: 'enabled mod_rewrite'
+            apache2_module: 'name=rewrite state=present'
+        -
+            name: 'install mysql'
+            apt: {name: [mariadb-client, mariadb-server, python-mysqldb], state: latest, update_cache: yes}
+    handlers:
+        -
+            name: 'restart apache2'
+            service: 'name=apache2 state=restarted'

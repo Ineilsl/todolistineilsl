@@ -21,7 +21,6 @@
     - name: install mysql
       yum:
         name:
-          - python-mysqldb
           - default-mysql-server
         state: latest
         update_cache: yes

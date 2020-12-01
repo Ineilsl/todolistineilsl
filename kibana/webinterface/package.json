@@ -1,0 +1,8 @@
+{
+	"name": "webinterface",
+	"version" : "6.6.1",
+	"main" : "index.js",
+
+	"dependencies" : {
+	}
+}
